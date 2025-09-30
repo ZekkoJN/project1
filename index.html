@@ -1,35 +1,639 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zekko</title>
+    <title>Zekko - Profil dan Sejarah Blora</title>
+    <meta name="description" content="Website biodata dan sejarah singkat Kabupaten Blora oleh Zekko Jotty Nugroho">
+    <meta name="keywords" content="Blora, Kabupaten Blora, Sejarah Blora, Wisata Blora, Zekko">
+    <meta name="author" content="Zekko Jotty Nugroho">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1> Biodata Saya</h1>
-    <pre>
-    NIM     : A12.2022.06860 
-    Nama    : Zekko Jotty Nugroho 
-    Alamat  : Semarang
-    </pre>
-
-    <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. In voluptatem, laborum aut illo iste, rem ipsam atque quam ratione repellat, vitae quasi. Harum culpa provident dolor adipisci reprehenderit deleniti et.
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magni, nisi minima? Earum maiores odio, hic vero at mollitia voluptate voluptatum totam molestiae rerum laboriosam sed beatae minima magni fuga repellat?
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates adipisci facere, consectetur error mollitia maxime repellat inventore perferendis voluptatum, praesentium natus, earum dolores illo quae possimus omnis repellendus explicabo est!
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit quas explicabo nesciunt facilis at doloremque provident veniam nobis nisi animi ducimus dolore assumenda eligendi ipsum, cupiditate aperiam tempore debitis quis.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Non fugit natus fugiat? Nisi doloribus nam facilis iste! Modi voluptatum numquam at, voluptate maxime alias, veritatis iure, praesentium autem debitis expedita?
-    </p>
-    <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui velit recusandae eaque laudantium asperiores praesentium nostrum quae cumque ipsum vitae eius harum quisquam saepe repudiandae autem, nemo ullam esse nihil.
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic suscipit vitae excepturi! Odio rerum nesciunt enim reiciendis. Consectetur ratione, nostrum beatae quaerat, at sunt quia neque, animi illo aspernatur saepe.
-    </p>
-    <p>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dignissimos sapiente unde voluptatum vitae dolorum, corrupti aut eligendi beatae asperiores velit sunt minima voluptatibus repellat libero ea, cumque ex ipsum eius!
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur cumque voluptates repellat delectus at nesciunt itaque voluptate totam vero, reprehenderit tempora pariatur soluta ad. Doloribus labore cum quas fuga sequi!
-    </p>
-
+    <!-- Skip Navigation -->
+    <a href="#main-content" class="skip-nav" aria-label="Skip to main content">Skip to main content</a>
     
-
+    <!-- Progress Bar -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+    
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Portal Informasi Kabupaten Blora</span>
+        </div>
+    </div>
+    
+    <!-- Header -->
+    <header class="header" role="banner">
+        <nav class="navbar" role="navigation" aria-label="Main navigation">
+            <div class="container">
+                <div class="nav-brand">
+                    <h1 class="logo">
+                        <i class="fas fa-leaf"></i>
+                        Blora
+                    </h1>
+                </div>
+                
+                <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                
+                <ul class="nav-menu" role="menubar">
+                    <li role="none"><a href="#profil" role="menuitem">Profil</a></li>
+                    <li role="none"><a href="#biodata" role="menuitem">Biodata</a></li>
+                    <li role="none"><a href="#sejarah" role="menuitem">Sejarah</a></li>
+                    <li role="none"><a href="#data" role="menuitem">Data</a></li>
+                    <li role="none"><a href="#wisata" role="menuitem">Wisata</a></li>
+                    <li role="none"><a href="#potensi" role="menuitem">Potensi</a></li>
+                    <li role="none"><a href="#galeri" role="menuitem">Galeri</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero" role="region" aria-label="Hero carousel">
+        <div class="carousel-container">
+            <div class="carousel" id="heroCarousel">
+                <div class="carousel-slide active">
+                    <img src="gambar/330px-Adipura_Blora_di_Jl.Jend.Ahmad_Yani_Blora.jpg" alt="Monumen Adipura Blora di Jalan Jenderal Ahmad Yani">
+                    <div class="carousel-caption">
+                        <h2>Monumen Adipura Blora</h2>
+                        <p>Simbol kebersihan dan prestasi lingkungan Kabupaten Blora</p>
+                    </div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="gambar/Goa_terawang.jpg" alt="Goa Terawang dengan stalaktit dan stalagmit">
+                    <div class="carousel-caption">
+                        <h2>Goa Terawang</h2>
+                        <p>Wisata alam dengan keindahan stalaktit dan stalagmit</p>
+                    </div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="gambar/Waduk_tempuran.jpg" alt="Waduk Tempuran destinasi wisata air">
+                    <div class="carousel-caption">
+                        <h2>Waduk Tempuran</h2>
+                        <p>Sumber air dan destinasi wisata alam yang mempesona</p>
+                    </div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="gambar/Penari_Barongan_dalam_Festival_Barongan_Blora_tahun_2015.jpg" alt="Penari Barongan dalam Festival Barongan Blora 2015">
+                    <div class="carousel-caption">
+                        <h2>Festival Barongan Blora</h2>
+                        <p>Warisan budaya seni tari barongan yang memukau</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Carousel Navigation -->
+            <button class="carousel-btn prev" aria-label="Previous slide">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="carousel-btn next" aria-label="Next slide">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            
+            <!-- Carousel Indicators -->
+            <div class="carousel-indicators">
+                <button class="indicator active" aria-label="Go to slide 1"></button>
+                <button class="indicator" aria-label="Go to slide 2"></button>
+                <button class="indicator" aria-label="Go to slide 3"></button>
+                <button class="indicator" aria-label="Go to slide 4"></button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Main Content -->
+    <main class="main-container" id="main-content">
+        <div class="container">
+            <div class="content-wrapper">
+                <!-- Main Content Area -->
+                <div class="main-content">
+                    
+                    <!-- Profil Section -->
+                    <section id="profil" class="content-section" data-aos="fade-up">
+                        <div class="section-header">
+                            <h2><i class="fas fa-map-marked-alt"></i> Profil Kabupaten Blora</h2>
+                        </div>
+                        
+                        <div class="profile-grid">
+                            <div class="profile-card" data-aos="fade-right">
+                                <h3>Informasi Dasar</h3>
+                                <div class="info-list">
+                                    <div class="info-item">
+                                        <span class="label">Julukan:</span>
+                                        <span class="value">Kota Sate, Kota Mustika</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="label">Ibu Kota:</span>
+                                        <span class="value">Blora</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="label">Provinsi:</span>
+                                        <span class="value">Jawa Tengah</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="label">Motto:</span>
+                                        <span class="value">"Mustika"</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="profile-card" data-aos="fade-left">
+                                <h3>Data Statistik</h3>
+                                <div class="stats-grid">
+                                    <div class="stat-item">
+                                        <div class="stat-number" data-target="1820">0</div>
+                                        <div class="stat-label">Luas (km²)</div>
+                                    </div>
+                                    <div class="stat-item">
+                                        <div class="stat-number" data-target="900000">0</div>
+                                        <div class="stat-label">Penduduk</div>
+                                    </div>
+                                    <div class="stat-item">
+                                        <div class="stat-number" data-target="16">0</div>
+                                        <div class="stat-label">Kecamatan</div>
+                                    </div>
+                                    <div class="stat-item">
+                                        <div class="stat-number" data-target="490">0</div>
+                                        <div class="stat-label">Kepadatan (/km²)</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="boundary-section" data-aos="fade-up" data-aos-delay="200">
+                            <h3>Batas Wilayah</h3>
+                            <div class="boundary-grid">
+                                <div class="boundary-item">
+                                    <i class="fas fa-arrow-up"></i>
+                                    <span class="direction">Utara</span>
+                                    <span class="region">Kabupaten Rembang & Pati</span>
+                                </div>
+                                <div class="boundary-item">
+                                    <i class="fas fa-arrow-right"></i>
+                                    <span class="direction">Timur</span>
+                                    <span class="region">Kabupaten Bojonegoro (Jatim)</span>
+                                </div>
+                                <div class="boundary-item">
+                                    <i class="fas fa-arrow-down"></i>
+                                    <span class="direction">Selatan</span>
+                                    <span class="region">Kabupaten Ngawi (Jatim)</span>
+                                </div>
+                                <div class="boundary-item">
+                                    <i class="fas fa-arrow-left"></i>
+                                    <span class="direction">Barat</span>
+                                    <span class="region">Kabupaten Grobogan</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Biodata Section -->
+                    <section id="biodata" class="content-section alt-bg" data-aos="fade-up">
+                        <div class="section-header">
+                            <h2><i class="fas fa-user"></i> Biodata Pembuat</h2>
+                        </div>
+                        
+                        <div class="biodata-card">
+                            <div class="biodata-content">
+                                <div class="biodata-item">
+                                    <span class="label">NIM:</span>
+                                    <span class="value">A12.2022.06860</span>
+                                </div>
+                                <div class="biodata-item">
+                                    <span class="label">Nama:</span>
+                                    <span class="value">Zekko Jotty Nugroho</span>
+                                </div>
+                                <div class="biodata-item">
+                                    <span class="label">Alamat:</span>
+                                    <span class="value">Blora</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Sejarah Section -->
+                    <section id="sejarah" class="content-section" data-aos="fade-up">
+                        <div class="section-header">
+                            <h2><i class="fas fa-scroll"></i> Sejarah Blora</h2>
+                        </div>
+                        
+                        <div class="timeline">
+                            <div class="timeline-item" data-aos="fade-right">
+                                <div class="timeline-marker">1</div>
+                                <div class="timeline-content">
+                                    <h3>Masa Kerajaan Kadipaten Jipang</h3>
+                                    <span class="timeline-date">Abad XVI</span>
+                                    <p>Blora merupakan bagian dari wilayah Kadipaten Jipang pada masa kerajaan Majapahit dan Demak.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="timeline-item" data-aos="fade-left">
+                                <div class="timeline-marker">2</div>
+                                <div class="timeline-content">
+                                    <h3>Blora pada Zaman Perang Mangkubumi</h3>
+                                    <span class="timeline-date">1727–1755</span>
+                                    <p>Blora menjadi saksi dalam konflik Perang Mangkubumi yang mengubah tatanan politik Jawa.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="timeline-item" data-aos="fade-right">
+                                <div class="timeline-marker">3</div>
+                                <div class="timeline-content">
+                                    <h3>Blora sebagai Kabupaten</h3>
+                                    <span class="timeline-date">11 Desember 1749</span>
+                                    <p>Penetapan resmi Blora sebagai kabupaten yang menjadi hari jadi Kabupaten Blora.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="timeline-item" data-aos="fade-left">
+                                <div class="timeline-marker">4</div>
+                                <div class="timeline-content">
+                                    <h3>Perjuangan Rakyat Blora</h3>
+                                    <span class="timeline-date">Era Kolonial</span>
+                                    <p>Gerakan Samin dan perlawanan rakyat Blora terhadap penjajahan Belanda.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Data Section -->
+                    <section id="data" class="content-section alt-bg" data-aos="fade-up">
+                        <div class="section-header">
+                            <h2><i class="fas fa-chart-bar"></i> Data & Fakta Singkat</h2>
+                        </div>
+                        
+                        <div class="data-grid">
+                            <div class="data-card" data-aos="zoom-in" data-aos-delay="100">
+                                <i class="fas fa-expand-arrows-alt"></i>
+                                <h3>Luas Wilayah</h3>
+                                <div class="data-value">1.825 km²</div>
+                            </div>
+                            <div class="data-card" data-aos="zoom-in" data-aos-delay="200">
+                                <i class="fas fa-users"></i>
+                                <h3>Jumlah Penduduk</h3>
+                                <div class="data-value">870.000 jiwa</div>
+                            </div>
+                            <div class="data-card" data-aos="zoom-in" data-aos-delay="300">
+                                <i class="fas fa-building"></i>
+                                <h3>Jumlah Kecamatan</h3>
+                                <div class="data-value">16 Kecamatan</div>
+                            </div>
+                            <div class="data-card" data-aos="zoom-in" data-aos-delay="400">
+                                <i class="fas fa-home"></i>
+                                <h3>Desa/Kelurahan</h3>
+                                <div class="data-value">271 Desa</div>
+                            </div>
+                            <div class="data-card" data-aos="zoom-in" data-aos-delay="500">
+                                <i class="fas fa-calendar-alt"></i>
+                                <h3>Tahun Pembentukan</h3>
+                                <div class="data-value">1749</div>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Wisata Section -->
+                    <section id="wisata" class="content-section" data-aos="fade-up">
+                        <div class="section-header">
+                            <h2><i class="fas fa-camera"></i> Wisata dan Keindahan Alam</h2>
+                        </div>
+                        
+                        <div class="wisata-grid">
+                            <div class="wisata-card" data-aos="fade-up" data-aos-delay="100">
+                                <div class="wisata-image">
+                                    <img src="gambar/Goa_terawang.jpg" alt="Goa Terawang" loading="lazy">
+                                </div>
+                                <div class="wisata-content">
+                                    <h3>Goa Terawang</h3>
+                                    <p>Goa dengan formasi stalaktit dan stalagmit yang menakjubkan, menawarkan petualangan alam yang unik.</p>
+                                    <div class="wisata-features">
+                                        <span class="feature-tag">Wisata Alam</span>
+                                        <span class="feature-tag">Petualangan</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="wisata-card" data-aos="fade-up" data-aos-delay="200">
+                                <div class="wisata-image">
+                                    <img src="gambar/Waduk_tempuran.jpg" alt="Waduk Tempuran" loading="lazy">
+                                </div>
+                                <div class="wisata-content">
+                                    <h3>Waduk Tempuran</h3>
+                                    <p>Sumber air sekaligus destinasi wisata dengan pemandangan yang menenangkan dan udara segar.</p>
+                                    <div class="wisata-features">
+                                        <span class="feature-tag">Wisata Air</span>
+                                        <span class="feature-tag">Rekreasi</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="wisata-card" data-aos="fade-up" data-aos-delay="300">
+                                <div class="wisata-image">
+                                    <img src="gambar/Penari_Barongan_dalam_Festival_Barongan_Blora_tahun_2015.jpg" alt="Festival Barongan" loading="lazy">
+                                </div>
+                                <div class="wisata-content">
+                                    <h3>Festival Barongan</h3>
+                                    <p>Warisan budaya seni tari barongan yang memukau dengan kostum tradisional dan gerakan yang energik.</p>
+                                    <div class="wisata-features">
+                                        <span class="feature-tag">Wisata Budaya</span>
+                                        <span class="feature-tag">Festival</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Potensi Section -->
+                    <section id="potensi" class="content-section alt-bg" data-aos="fade-up">
+                        <div class="section-header">
+                            <h2><i class="fas fa-seedling"></i> Potensi & Budaya</h2>
+                        </div>
+                        
+                        <div class="potensi-grid">
+                            <div class="potensi-item" data-aos="slide-right">
+                                <div class="potensi-icon">
+                                    <i class="fas fa-tree"></i>
+                                </div>
+                                <div class="potensi-content">
+                                    <h3>Hutan Jati</h3>
+                                    <p>Potensi kayu berkualitas tinggi dan ekowisata hutan jati yang berkelanjutan.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="potensi-item" data-aos="slide-left">
+                                <div class="potensi-icon">
+                                    <i class="fas fa-oil-well"></i>
+                                </div>
+                                <div class="potensi-content">
+                                    <h3>Migas Cepu</h3>
+                                    <p>Sejarah panjang pengeboran minyak dan gas yang menjadi potensi ekonomi daerah.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="potensi-item" data-aos="slide-right">
+                                <div class="potensi-icon">
+                                    <i class="fas fa-utensils"></i>
+                                </div>
+                                <div class="potensi-content">
+                                    <h3>Kuliner Sate</h3>
+                                    <p>Sate kambing dan berbagai olahan daging yang menjadi ciri khas kuliner Blora.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="potensi-item" data-aos="slide-left">
+                                <div class="potensi-icon">
+                                    <i class="fas fa-masks-theater"></i>
+                                </div>
+                                <div class="potensi-content">
+                                    <h3>Seni Barongan</h3>
+                                    <p>Kesenian tari dan topeng barongan yang menjadi warisan budaya tak ternilai.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Galeri Section -->
+                    <section id="galeri" class="content-section" data-aos="fade-up">
+                        <div class="section-header">
+                            <h2><i class="fas fa-images"></i> Galeri Mini</h2>
+                        </div>
+                        
+                        <div class="gallery-grid">
+                            <div class="gallery-item" data-aos="zoom-in" data-aos-delay="100">
+                                <img src="gambar/Goa_terawang.jpg" alt="Goa Terawang" loading="lazy">
+                                <div class="gallery-overlay">
+                                    <h4>Goa Terawang</h4>
+                                    <p>Keindahan stalaktit dan stalagmit</p>
+                                </div>
+                            </div>
+                            
+                            <div class="gallery-item" data-aos="zoom-in" data-aos-delay="200">
+                                <img src="gambar/Waduk_tempuran.jpg" alt="Waduk Tempuran" loading="lazy">
+                                <div class="gallery-overlay">
+                                    <h4>Waduk Tempuran</h4>
+                                    <p>Sumber air dan wisata alam</p>
+                                </div>
+                            </div>
+                            
+                            <div class="gallery-item" data-aos="zoom-in" data-aos-delay="300">
+                                <img src="gambar/330px-Adipura_Blora_di_Jl.Jend.Ahmad_Yani_Blora.jpg" alt="Monumen Adipura" loading="lazy">
+                                <div class="gallery-overlay">
+                                    <h4>Monumen Adipura</h4>
+                                    <p>Simbol prestasi lingkungan</p>
+                                </div>
+                            </div>
+                            
+                            <div class="gallery-item" data-aos="zoom-in" data-aos-delay="400">
+                                <img src="gambar/Penari_Barongan_dalam_Festival_Barongan_Blora_tahun_2015.jpg" alt="Penari Barongan" loading="lazy">
+                                <div class="gallery-overlay">
+                                    <h4>Penari Barongan</h4>
+                                    <p>Warisan budaya yang memukau</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    
+                </div>
+                
+                <!-- Sidebar -->
+                <aside class="sidebar" role="complementary">
+                    
+                    <!-- Quick Navigation -->
+                    <div class="sidebar-widget" data-aos="fade-left">
+                        <h3><i class="fas fa-list"></i> Navigasi Cepat</h3>
+                        <div class="quick-nav">
+                            <a href="#profil" class="nav-link">Profil</a>
+                            <a href="#biodata" class="nav-link">Biodata</a>
+                            <a href="#sejarah" class="nav-link">Sejarah</a>
+                            <a href="#data" class="nav-link">Data</a>
+                            <a href="#wisata" class="nav-link">Wisata</a>
+                            <a href="#potensi" class="nav-link">Potensi</a>
+                            <a href="#galeri" class="nav-link">Galeri</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Reading Progress -->
+                    <div class="sidebar-widget" data-aos="fade-left" data-aos-delay="100">
+                        <h3><i class="fas fa-book-reader"></i> Progress Baca</h3>
+                        <div class="reading-progress">
+                            <div class="progress-circle">
+                                <svg width="80" height="80">
+                                    <circle cx="40" cy="40" r="35" stroke="#e0e0e0" stroke-width="6" fill="none"/>
+                                    <circle cx="40" cy="40" r="35" stroke="#FF8C42" stroke-width="6" fill="none" 
+                                            stroke-dasharray="219.9" stroke-dashoffset="219.9" id="progressCircle"/>
+                                </svg>
+                                <div class="progress-text">0%</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Timeline Sejarah -->
+                    <div class="sidebar-widget" data-aos="fade-left" data-aos-delay="200">
+                        <h3><i class="fas fa-clock"></i> Timeline Sejarah</h3>
+                        <div class="mini-timeline">
+                            <div class="mini-timeline-item">
+                                <span class="year">Abad XVI</span>
+                                <span class="event">Kadipaten Jipang</span>
+                            </div>
+                            <div class="mini-timeline-item">
+                                <span class="year">1727-1755</span>
+                                <span class="event">Perang Mangkubumi</span>
+                            </div>
+                            <div class="mini-timeline-item">
+                                <span class="year">1749</span>
+                                <span class="event">Berdiri Kabupaten</span>
+                            </div>
+                            <div class="mini-timeline-item">
+                                <span class="year">2020</span>
+                                <span class="event">Era Modern</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Kuliner Khas -->
+                    <div class="sidebar-widget" data-aos="fade-left" data-aos-delay="300">
+                        <h3><i class="fas fa-drumstick-bite"></i> Kuliner Khas</h3>
+                        <div class="kuliner-list">
+                            <div class="kuliner-item">
+                                <i class="fas fa-fire"></i>
+                                <span>Sate Kambing</span>
+                            </div>
+                            <div class="kuliner-item">
+                                <i class="fas fa-seedling"></i>
+                                <span>Lontong Tahu</span>
+                            </div>
+                            <div class="kuliner-item">
+                                <i class="fas fa-egg"></i>
+                                <span>Opor Ayam</span>
+                            </div>
+                            <div class="kuliner-item">
+                                <i class="fas fa-cookie-bite"></i>
+                                <span>Kue Tradisional</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Weather Widget -->
+                    <div class="sidebar-widget" data-aos="fade-left" data-aos-delay="400">
+                        <h3><i class="fas fa-cloud-sun"></i> Cuaca Blora</h3>
+                        <div class="weather-widget" id="weatherWidget">
+                            <div class="weather-loading">
+                                <i class="fas fa-spinner fa-spin"></i>
+                                <span>Memuat data cuaca...</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Agenda -->
+                    <div class="sidebar-widget" data-aos="fade-left" data-aos-delay="500">
+                        <h3><i class="fas fa-calendar"></i> Agenda & Event</h3>
+                        <div class="agenda-list">
+                            <div class="agenda-item">
+                                <span class="agenda-date">Des 2024</span>
+                                <span class="agenda-title">Festival Barongan Tahunan</span>
+                            </div>
+                            <div class="agenda-item">
+                                <span class="agenda-date">Jan 2025</span>
+                                <span class="agenda-title">Pameran Kerajinan Lokal</span>
+                            </div>
+                            <div class="agenda-item">
+                                <span class="agenda-date">Mar 2025</span>
+                                <span class="agenda-title">Festival Kuliner Sate</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Referensi -->
+                    <div class="sidebar-widget" data-aos="fade-left" data-aos-delay="600">
+                        <h3><i class="fas fa-external-link-alt"></i> Referensi</h3>
+                        <div class="reference-links">
+                            <a href="https://id.wikipedia.org/wiki/Kabupaten_Blora" target="_blank" rel="noopener">
+                                <i class="fab fa-wikipedia-w"></i>
+                                Wikipedia Blora
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Kontak -->
+                    <div class="sidebar-widget" data-aos="fade-left" data-aos-delay="700">
+                        <h3><i class="fas fa-address-book"></i> Kontak</h3>
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <span>info@blorakab.go.id</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <span>(0296) 531014</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-globe"></i>
+                                <span>www.blorakab.go.id</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </aside>
+                
+            </div>
+        </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>ZekkoBlora</h4>
+                    <p>Portal informasi Kabupaten Blora yang menyajikan profil lengkap dan sejarah daerah.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Pembuat</h4>
+                    <p>Zekko Jotty Nugroho</p>
+                    <p>NIM: A12.2022.06860</p>
+                    <p>Alamat: Blora</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Sumber</h4>
+                    <p>Wikipedia Kabupaten Blora (CC BY-SA 4.0)</p>
+                    <p>Gambar: Koleksi Lokal</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 ZekkoBlora. Dibuat dengan <i class="fas fa-heart" style="color: #FF8C42;"></i> untuk Kabupaten Blora</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+    
+    <!-- JavaScript -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
