@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universitas </title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            font-style: italic;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: #2c3e50;
+            padding: 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            margin: 0;
+        }
+
+        nav ul li a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 1rem 1.5rem;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: #3498db;
+            color: white;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        section h2 {
+            color: #1e3c72;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 0.5rem;
+        }
+
+        section h3 {
+            color: #2c3e50;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        section p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        section ul {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Form Styling */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .btn {
+            background-color: #3498db;
+            color: white;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #2980b9;
+        }
+
+        /* Faculty Cards */
+        .faculty-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .faculty-card {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .faculty-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .faculty-card h4 {
+            color: #1e3c72;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav ul li a {
+                padding: 0.75rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            section {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Universitas </h1>
+        <p>Membangun Generasi Unggul dan Berkarakter</p>
+    </header>
+
+    <!-- Navigation Menu -->
+    <nav>
+        <ul>
+            <li><a href="#profil">Profil</a></li>
+            <li><a href="#fakultas-prodi">Fakultas & Prodi</a></li>
+            <li><a href="#pendaftaran">Pendaftaran Mahasiswa Baru</a></li>
+            <li><a href="konsultasi.html" target="_blank">Konsultasi</a></li>
+            <li><a href="berita.html" target="_blank">Berita</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Profil Section -->
+        <section id="profil">
+            <h2>Profil Universitas</h2>
+            <p>
+                <strong>Universitas </strong> adalah institusi pendidikan tinggi yang berkomitmen untuk menghasilkan lulusan yang berkualitas, berintegritas, dan siap bersaing di era global. Didirikan dengan visi untuk menjadi universitas terkemuka di Indonesia, kami menyediakan berbagai program studi yang relevan dengan kebutuhan industri dan masyarakat.
+            </p>
+            
+            <h3>Visi</h3>
+            <p>
+                Menjadi universitas unggulan yang menghasilkan lulusan berkarakter, inovatif, dan berdaya saing global pada tahun 2030.
+            </p>
+
+            <h3>Misi</h3>
+            <ul>
+                <li>Menyelenggarakan pendidikan tinggi yang berkualitas dan berbasis teknologi</li>
+                <li>Mengembangkan penelitian dan pengabdian masyarakat yang bermanfaat</li>
+                <li>Membentuk karakter mahasiswa yang berakhlak mulia dan profesional</li>
+                <li>Menjalin kerjasama dengan berbagai institusi dalam dan luar negeri</li>
+                <li>Menghasilkan lulusan yang kompeten dan siap kerja</li>
+            </ul>
+
+            <h3>Fasilitas</h3>
+            <p>
+                Universitas  dilengkapi dengan berbagai fasilitas modern untuk mendukung kegiatan akademik dan non-akademik mahasiswa, antara lain:
+            </p>
+            <ul>
+                <li>Perpustakaan digital dengan koleksi lebih dari 100.000 buku</li>
+                <li>Laboratorium komputer dan multimedia yang lengkap</li>
+                <li>Ruang kuliah ber-AC dengan fasilitas LCD projector</li>
+                <li>Auditorium dengan kapasitas 1000 orang</li>
+                <li>Fasilitas olahraga (lapangan basket, futsal, dan fitness center)</li>
+                <li>Kantin dan cafeteria yang nyaman</li>
+                <li>Asrama mahasiswa untuk mahasiswa luar kota</li>
+                <li>Klinik kesehatan 24 jam</li>
+            </ul>
+        </section>
+
+        <!-- Fakultas & Prodi Section -->
+        <section id="fakultas-prodi">
+            <h2>Fakultas & Program Studi</h2>
+            <p>
+                Universitas  memiliki 5 fakultas dengan berbagai program studi yang terakreditasi dan dikelola oleh dosen-dosen profesional yang berpengalaman.
+            </p>
+
+            <div class="faculty-grid">
+                <div class="faculty-card">
+                    <h4>Fakultas Teknik</h4>
+                    <ul>
+                        <li>Teknik Informatika (S1)</li>
+                        <li>Teknik Elektro (S1)</li>
+                        <li>Teknik Sipil (S1)</li>
+                        <li>Teknik Mesin (S1)</li>
+                    </ul>
+                </div>
+
+                <div class="faculty-card">
+                    <h4>Fakultas Ekonomi dan Bisnis</h4>
+                    <ul>
+                        <li>Manajemen (S1)</li>
+                        <li>Akuntansi (S1)</li>
+                        <li>Ekonomi Pembangunan (S1)</li>
+                        <li>Bisnis Digital (S1)</li>
+                    </ul>
+                </div>
+
+                <div class="faculty-card">
+                    <h4>Fakultas Ilmu Sosial dan Politik</h4>
+                    <ul>
+                        <li>Ilmu Komunikasi (S1)</li>
+                        <li>Hubungan Internasional (S1)</li>
+                        <li>Administrasi Publik (S1)</li>
+                        <li>Ilmu Politik (S1)</li>
+                    </ul>
+                </div>
+
+                <div class="faculty-card">
+                    <h4>Fakultas Kedokteran</h4>
+                    <ul>
+                        <li>Pendidikan Dokter (S1)</li>
+                        <li>Ilmu Keperawatan (S1)</li>
+                        <li>Farmasi (S1)</li>
+                        <li>Kesehatan Masyarakat (S1)</li>
+                    </ul>
+                </div>
+
+                <div class="faculty-card">
+                    <h4>Fakultas Hukum</h4>
+                    <ul>
+                        <li>Ilmu Hukum (S1)</li>
+                        <li>Hukum Bisnis (S1)</li>
+                        <li>Hukum Internasional (S1)</li>
+                    </ul>
+                </div>
+
+                <div class="faculty-card">
+                    <h4>Fakultas Pendidikan</h4>
+                    <ul>
+                        <li>Pendidikan Bahasa Inggris (S1)</li>
+                        <li>Pendidikan Matematika (S1)</li>
+                        <li>Pendidikan Guru Sekolah Dasar (S1)</li>
+                        <li>Pendidikan Teknologi Informasi (S1)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pendaftaran Mahasiswa Baru Section -->
+        <section id="pendaftaran">
+            <h2>Pendaftaran Mahasiswa Baru</h2>
+            <p>
+                Selamat datang calon mahasiswa baru! Universitas  membuka pendaftaran mahasiswa baru untuk tahun akademik 2025/2026. Bergabunglah dengan kami dan wujudkan cita-cita Anda!
+            </p>
+
+            <h3>Jalur Pendaftaran</h3>
+            <ul>
+                <li><strong>Jalur SNBP (Seleksi Nasional Berdasarkan Prestasi):</strong> Pendaftaran melalui nilai rapor dan prestasi akademik</li>
+                <li><strong>Jalur SNBT (Seleksi Nasional Berdasarkan Tes):</strong> Pendaftaran melalui ujian tertulis berbasis komputer</li>
+                <li><strong>Jalur Mandiri:</strong> Pendaftaran langsung melalui ujian mandiri universitas</li>
+                <li><strong>Jalur Prestasi:</strong> Pendaftaran khusus untuk siswa berprestasi di bidang akademik maupun non-akademik</li>
+            </ul>
+
+            <h3>Persyaratan Umum</h3>
+            <ul>
+                <li>Lulusan SMA/SMK/MA atau sederajat</li>
+                <li>Memiliki ijazah dan transkrip nilai yang telah dilegalisir</li>
+                <li>Pas foto terbaru ukuran 3x4 (5 lembar)</li>
+                <li>Fotocopy KTP dan Kartu Keluarga</li>
+                <li>Surat keterangan sehat dari dokter</li>
+                <li>Surat keterangan bebas narkoba</li>
+            </ul>
+
+            <h3>Jadwal Pendaftaran</h3>
+            <ul>
+                <li><strong>Gelombang 1:</strong> 1 Januari - 28 Februari 2025</li>
+                <li><strong>Gelombang 2:</strong> 1 Maret - 30 April 2025</li>
+                <li><strong>Gelombang 3:</strong> 1 Mei - 30 Juni 2025</li>
+            </ul>
+
+            <h3>Biaya Pendaftaran</h3>
+            <p>
+                <strong>Rp 300.000,-</strong> (Tiga Ratus Ribu Rupiah)
+            </p>
+
+            <h3>Formulir Pendaftaran Online</h3>
+            <form>
+                <div class="form-group">
+                    <label for="nama">Nama Lengkap:</label>
+                    <input type="text" id="nama" name="nama" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="telepon">Nomor Telepon:</label>
+                    <input type="tel" id="telepon" name="telepon" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="asal-sekolah">Asal Sekolah:</label>
+                    <input type="text" id="asal-sekolah" name="asal-sekolah" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="fakultas">Pilihan Fakultas:</label>
+                    <select id="fakultas" name="fakultas" required>
+                        <option value="">-- Pilih Fakultas --</option>
+                        <option value="teknik">Fakultas Teknik</option>
+                        <option value="ekonomi">Fakultas Ekonomi dan Bisnis</option>
+                        <option value="fisipol">Fakultas Ilmu Sosial dan Politik</option>
+                        <option value="kedokteran">Fakultas Kedokteran</option>
+                        <option value="hukum">Fakultas Hukum</option>
+                        <option value="pendidikan">Fakultas Pendidikan</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="jalur">Jalur Pendaftaran:</label>
+                    <select id="jalur" name="jalur" required>
+                        <option value="">-- Pilih Jalur --</option>
+                        <option value="snbp">SNBP</option>
+                        <option value="snbt">SNBT</option>
+                        <option value="mandiri">Mandiri</option>
+                        <option value="prestasi">Prestasi</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="pesan">Pesan/Catatan:</label>
+                    <textarea id="pesan" name="pesan"></textarea>
+                </div>
+
+                <button type="submit" class="btn">Kirim Pendaftaran</button>
+            </form>
+
+            <h3>Informasi Lebih Lanjut</h3>
+            <p>
+                Untuk informasi lebih lanjut mengenai pendaftaran mahasiswa baru, silakan hubungi:
+            </p>
+            <ul>
+                <li><strong>Telepon:</strong> (021) 1234-5678</li>
+                <li><strong>WhatsApp:</strong> 0812-3456-7890</li>
+                <li><strong>Email:</strong> pmb@universitas.ac.id</li>
+                <li><strong>Website:</strong> www.universitas.ac.id</li>
+            </ul>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p><strong>NIM:</strong> A12.2022.06860</p>
+        <p><strong>Nama:</strong> Zekko Jotty Nugroho</p>
+        <p>&copy; 2025 Universitas Nusantara Jaya. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

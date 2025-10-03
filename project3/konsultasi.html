@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konsultasi - Universitas Nusantara Jaya</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            font-style: italic;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #1e3c72;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 0.5rem;
+        }
+
+        h3 {
+            color: #2c3e50;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        /* Info Boxes */
+        .info-box {
+            background-color: #e8f4f8;
+            padding: 1.5rem;
+            border-left: 4px solid #3498db;
+            margin-bottom: 1.5rem;
+            border-radius: 5px;
+        }
+
+        .info-box h4 {
+            color: #1e3c72;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-box ul {
+            margin-left: 1.5rem;
+        }
+
+        .info-box ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Consultation Types Grid */
+        .consultation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .consultation-card {
+            background-color: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s;
+        }
+
+        .consultation-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-color: #3498db;
+        }
+
+        .consultation-card h4 {
+            color: #1e3c72;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        /* Form Styling */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+        }
+
+        .btn {
+            background-color: #3498db;
+            color: white;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #2980b9;
+        }
+
+        .btn-secondary {
+            background-color: #95a5a6;
+            margin-left: 1rem;
+        }
+
+        .btn-secondary:hover {
+            background-color: #7f8c8d;
+        }
+
+        /* Contact Info */
+        .contact-info {
+            background-color: #fff9e6;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+
+        .contact-info h3 {
+            margin-top: 0;
+            color: #d68910;
+        }
+
+        .contact-info ul {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .contact-info ul li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .contact-info ul li:before {
+            content: "📞";
+            position: absolute;
+            left: 0;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                margin: 1rem;
+                padding: 1rem;
+            }
+
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            .btn-secondary {
+                margin-left: 0;
+                margin-top: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Layanan Konsultasi</h1>
+        <p style="text-align: center;">Universitas </p>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h2>Konsultasi Akademik dan Kemahasiswaan</h2>
+        
+        <p>
+            Selamat datang di layanan konsultasi Universitas . Kami menyediakan berbagai layanan konsultasi untuk membantu mahasiswa dan calon mahasiswa dalam mengatasi berbagai permasalahan akademik, karir, dan personal.
+        </p>
+
+        <div class="info-box">
+            <h4>Mengapa Konsultasi Penting?</h4>
+            <ul>
+                <li>Membantu mahasiswa mengatasi kesulitan akademik</li>
+                <li>Memberikan arahan dalam pengembangan karir</li>
+                <li>Mendukung kesehatan mental dan emosional mahasiswa</li>
+                <li>Membantu perencanaan studi dan pemilihan mata kuliah</li>
+                <li>Memberikan solusi terhadap masalah pribadi yang mempengaruhi studi</li>
+            </ul>
+        </div>
+
+        <h3>Jenis Layanan Konsultasi</h3>
+        
+        <div class="consultation-grid">
+            <div class="consultation-card">
+                <h4>Konsultasi Akademik</h4>
+                <p>Bimbingan mengenai masalah akademik, pemilihan mata kuliah, strategi belajar, dan perencanaan studi.</p>
+            </div>
+
+            <div class="consultation-card">
+                <h4>Konsultasi Karir</h4>
+                <p>Bantuan dalam perencanaan karir, pemilihan jurusan, magang, dan persiapan memasuki dunia kerja.</p>
+            </div>
+
+            <div class="consultation-card">
+                <h4>Konsultasi Psikologi</h4>
+                <p>Dukungan psikologis untuk mengatasi stress, kecemasan, dan masalah emosional lainnya.</p>
+            </div>
+
+            <div class="consultation-card">
+                <h4>Konsultasi Finansial</h4>
+                <p>Informasi tentang beasiswa, bantuan keuangan, dan pengelolaan keuangan mahasiswa.</p>
+            </div>
+        </div>
+
+        <h3>Jadwal Konsultasi</h3>
+        <div class="info-box">
+            <p><strong>Senin - Jumat:</strong> 08.00 - 16.00 WIB</p>
+            <p><strong>Sabtu:</strong> 08.00 - 12.00 WIB</p>
+            <p><strong>Minggu & Hari Libur:</strong> Tutup</p>
+            <p style="margin-top: 1rem; color: #e74c3c;"><strong>Catatan:</strong> Harap membuat janji terlebih dahulu untuk konsultasi tatap muka.</p>
+        </div>
+
+        <h3>Formulir Permintaan Konsultasi</h3>
+        <p>Silakan isi formulir di bawah ini untuk mengajukan permintaan konsultasi. Tim kami akan menghubungi Anda dalam waktu 1x24 jam.</p>
+
+        <form>
+            <div class="form-group">
+                <label for="nama">Nama Lengkap: *</label>
+                <input type="text" id="nama" name="nama" required placeholder="Masukkan nama lengkap Anda">
+            </div>
+
+            <div class="form-group">
+                <label for="nim">NIM/No. Identitas:</label>
+                <input type="text" id="nim" name="nim" placeholder="Masukkan NIM (jika sudah menjadi mahasiswa)">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email: *</label>
+                <input type="email" id="email" name="email" required placeholder="alamat@email.com">
+            </div>
+
+            <div class="form-group">
+                <label for="telepon">Nomor Telepon/WhatsApp: *</label>
+                <input type="tel" id="telepon" name="telepon" required placeholder="08xx-xxxx-xxxx">
+            </div>
+
+            <div class="form-group">
+                <label for="jenis-konsultasi">Jenis Konsultasi: *</label>
+                <select id="jenis-konsultasi" name="jenis-konsultasi" required>
+                    <option value="">-- Pilih Jenis Konsultasi --</option>
+                    <option value="akademik">Konsultasi Akademik</option>
+                    <option value="karir">Konsultasi Karir</option>
+                    <option value="psikologi">Konsultasi Psikologi</option>
+                    <option value="finansial">Konsultasi Finansial</option>
+                    <option value="lainnya">Lainnya</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="metode">Metode Konsultasi: *</label>
+                <select id="metode" name="metode" required>
+                    <option value="">-- Pilih Metode --</option>
+                    <option value="tatap-muka">Tatap Muka</option>
+                    <option value="online">Online (Zoom/Google Meet)</option>
+                    <option value="telepon">Telepon</option>
+                    <option value="chat">Chat/WhatsApp</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="tanggal">Tanggal yang Diinginkan:</label>
+                <input type="date" id="tanggal" name="tanggal">
+            </div>
+
+            <div class="form-group">
+                <label for="waktu">Waktu yang Diinginkan:</label>
+                <select id="waktu" name="waktu">
+                    <option value="">-- Pilih Waktu --</option>
+                    <option value="08:00-10:00">08.00 - 10.00 WIB</option>
+                    <option value="10:00-12:00">10.00 - 12.00 WIB</option>
+                    <option value="13:00-15:00">13.00 - 15.00 WIB</option>
+                    <option value="15:00-16:00">15.00 - 16.00 WIB</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="perihal">Perihal/Topik yang Ingin Dikonsultasikan: *</label>
+                <textarea id="perihal" name="perihal" required placeholder="Jelaskan secara singkat masalah atau topik yang ingin Anda konsultasikan..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="detail">Detail Tambahan:</label>
+                <textarea id="detail" name="detail" placeholder="Tambahkan informasi lain yang menurut Anda penting untuk kami ketahui..."></textarea>
+            </div>
+
+            <button type="submit" class="btn">Kirim Permintaan Konsultasi</button>
+            <button type="reset" class="btn btn-secondary">Reset Form</button>
+        </form>
+
+        <div class="contact-info">
+            <h3>Kontak Langsung</h3>
+            <p>Anda juga dapat menghubungi kami langsung melalui:</p>
+            <ul>
+                <li><strong>Telepon:</strong> (021) 1234-5678</li>
+                <li><strong>WhatsApp:</strong> 0812-3456-7890</li>
+                <li><strong>Email:</strong> konsultasi@universitas.ac.id</li>
+                <li><strong>Alamat:</strong> Gedung Rektorat Lt. 2, Jl. Pendidikan No. 123, Jakarta Selatan</li>
+            </ul>
+        </div>
+
+        <a href="index.html" class="back-link">← Kembali ke Halaman Utama</a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p><strong>NIM:</strong> A12.2022.06860</p>
+        <p><strong>Nama:</strong> Zekko Jotty Nugroho</p>
+        <p>&copy; 2025 Universitas Nusantara Jaya. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
