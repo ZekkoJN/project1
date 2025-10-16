@@ -1,0 +1,20 @@
+p{
+    background-color: chartreuse;
+    color: coral;
+    font-size: 30px;
+}
+
+body{
+    /* Gunakan file gambar Anda sendiri di folder image; diperbarui ke udns.jpeg */
+    background-image: url('../image/udns.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/* Tambahan latihan: h1 styling */
+h1{
+    font-size: 20px;
+    color: magenta;
+    font-weight: bold;
+    text-align: center;
+}
