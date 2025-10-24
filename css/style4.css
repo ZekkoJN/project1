@@ -1,0 +1,136 @@
+/* mengatur gaya umum body */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background-color: #b0c8ec;
+}
+
+/* mengatur bagian Header menggunakan class header  */
+.header {
+    background-color: #237dad;
+    color: white;
+    padding: 8px;
+    text-align: center;
+    position: sticky; /* mengatur elemen menempel di layar saat di-scroll,dan tetap berada di dalam area kontennya. */
+    top: 0;
+    z-index: 1000; /* Header menempel di atas layar (sticky) dan selalu tampil di depan elemen lain.*/
+}
+
+nav {
+    background-color: #125d8a;
+    display: flex;
+    justify-content: center;
+    padding: 10px; /* semua sisi (atas, kanan, bawah, kiri) diberi jarak 10 piksel secara merata */
+    top: 0px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none; /* Menghapus hiasan (dekorasi) teks bawaan, seperti garis bawah pada link (<a>) dll.*/
+    padding: 10px 20px; /* memberi ruang di dalam elemen – atas & bawah 10px, kiri & kanan 20px */
+    margin: 5px;
+    background-color: #17bfa4;
+    border-radius: 5px; /* melengkungkan sudut-sudut agar membulat */
+    transition: background-color 0.3s ease; /* membuat perubahan warna latar belakang elemen terjadi secara bertahap dan halus, bukan seketika */
+}
+nav a:hover {
+    background-color: #0b4f7e;
+}
+
+/* Struktur utama halaman */
+.container {
+    display: flex; /*digunakan untuk mengaktifkan Flexbox layout pada suatu elemen.
+    Artinya: elemen tersebut akan menjadi wadah (container) yang mengatur posisi dan ukuran anak-anaknya (child elements) secara fleksibel dan responsif. */
+    gap: 20px;
+    padding: 20px;
+    margin-bottom: -25px;
+}
+
+.sidebar {
+    flex: 1;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    height: fit-content; /* untuk mengatur tinggi elemen agar pas dengan kontennya secara otomatis, tanpa membuatnya lebih besar dari ukuran konten maksimum atau lebih kecil dari ukuran minimumnya */
+}
+
+.content {
+    flex: 3;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2); /* Perintah ini digunakan untuk memberikan efek bayangan (shadow) pada sebuah elemen – misalnya kotak, gambar, atau tombol – agar terlihat lebih menonjol dan tampak seperti mengambang di atas latar belakang.*/
+}
+
+/* Katalog Produk */
+.catalog-container {
+    display: flex;
+    flex-wrap: wrap; /* digunakan Flexbox agar elemen2 di dalam containerturun ke baris berikutnya jika ruang horizontal tidak cukup. */
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.product-card {
+    width: 250px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* Perintah ini digunakan untuk memberikan efek bayangan (shadow) pada sebuah elemen – misalnya kotak, gambar, atau tombol
+    – agar terlihat lebih menonjol dan tampak seperti mengambang di atas latar belakang.*/
+    scroll-snap-align: start; /* membuat setiap elemen (misalnya kartu produk) menempel di posisi awal tampilan (kiri atau atas) ketika pengguna menggulir secara horizontal atau vertikal. Fungsi: agar tampilan scroll menjadi rapi, teratur, dan profesional.*/
+}
+.product-card img {
+    width: 70%;
+    border-radius: 15px 15px 0 0; /* border-radius: atas-kiri atas-kanan bawah-kanan bawah-kiri; */
+}
+.product-card h3 {
+    margin: 10px 5px;
+    color: #1333;
+}
+.product-card .price {
+    color: #008CBA;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+.product-card button {
+    background-color: #008CBA;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-bottom: 15px;
+}
+.product-card button:hover {
+    background-color: #005f7f;
+}
+/* akan bergerak keatas */
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.2);
+}
+section {
+    scroll-margin-top: 120px;
+}
+
+/* Footer */
+footer {
+    background-color: #237dad;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+/* Responsif */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+    nav {
+        position: static;
+    }
+}
