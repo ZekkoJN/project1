@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promo & Diskon - TechHub</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Promo-specific styles */
+        .promo-hero {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 50%, #c92a2a 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .promo-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .promo-hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .countdown-item {
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 20px 30px;
+            border-radius: 10px;
+            min-width: 100px;
+        }
+
+        .countdown-item .number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            display: block;
+        }
+
+        .countdown-item .label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-top: 5px;
+        }
+
+        .promo-categories {
+            padding: 60px 20px;
+            background-color: var(--light-bg);
+        }
+
+        body.dark-mode .promo-categories {
+            background-color: var(--dark-bg);
+        }
+
+        .category-promo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .category-promo-card {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: var(--transition);
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-promo-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200px;
+            height: 200px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .category-promo-card:hover::before {
+            top: -20%;
+            right: -20%;
+        }
+
+        .category-promo-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(16, 185, 129, 0.4);
+        }
+
+        .category-promo-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .category-promo-card .discount {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .category-promo-card p {
+            font-size: 1rem;
+            margin-bottom: 20px;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+        }
+
+        .category-promo-card .btn {
+            background-color: white;
+            color: var(--primary-color);
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            z-index: 1;
+        }
+
+        .category-promo-card .btn:hover {
+            transform: scale(1.05);
+        }
+
+        .flash-sale {
+            padding: 60px 20px;
+            background-color: var(--light-bg-secondary);
+        }
+
+        body.dark-mode .flash-sale {
+            background-color: var(--dark-bg-secondary);
+        }
+
+        .flash-sale-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .flash-sale-card {
+            background-color: var(--light-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        body.dark-mode .flash-sale-card {
+            background-color: var(--dark-bg);
+        }
+
+        .flash-sale-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--card-shadow-hover);
+        }
+
+        .flash-sale-image {
+            width: 100%;
+            height: 180px;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .flash-sale-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .flash-sale-discount {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #ff6b6b;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-weight: 800;
+            font-size: 1.1rem;
+        }
+
+        .flash-sale-info {
+            padding: 15px;
+        }
+
+        .flash-sale-name {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--light-text);
+            font-size: 0.95rem;
+        }
+
+        body.dark-mode .flash-sale-name {
+            color: var(--dark-text);
+        }
+
+        .flash-sale-price {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .new-price {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--primary-color);
+        }
+
+        .old-price {
+            font-size: 0.9rem;
+            color: #999;
+            text-decoration: line-through;
+        }
+
+        .stock-info {
+            font-size: 0.85rem;
+            color: #ff6b6b;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .buy-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .buy-btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .voucher-section {
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .vouchers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .voucher-card {
+            background-color: white;
+            color: #333;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            transition: var(--transition);
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .voucher-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .voucher-code {
+            background-color: #f0f0f0;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: 800;
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 2px;
+        }
+
+        .voucher-discount {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #ff6b6b;
+            margin-bottom: 10px;
+        }
+
+        .voucher-desc {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .copy-btn {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .copy-btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .terms {
+            padding: 60px 20px;
+            background-color: var(--light-bg);
+        }
+
+        body.dark-mode .terms {
+            background-color: var(--dark-bg);
+        }
+
+        .terms-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: var(--light-bg-secondary);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: var(--card-shadow);
+        }
+
+        body.dark-mode .terms-content {
+            background-color: var(--dark-bg-secondary);
+        }
+
+        .terms-content h3 {
+            color: var(--primary-color);
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .terms-content ul {
+            margin-left: 20px;
+            line-height: 2;
+            color: var(--light-text);
+        }
+
+        body.dark-mode .terms-content ul {
+            color: var(--dark-text);
+        }
+
+        .terms-content li {
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .promo-hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .promo-hero p {
+                font-size: 1.1rem;
+            }
+
+            .countdown {
+                gap: 10px;
+            }
+
+            .countdown-item {
+                padding: 15px 20px;
+            }
+
+            .category-promo-card h3 {
+                font-size: 1.3rem;
+            }
+
+            .category-promo-card .discount {
+                font-size: 2.2rem;
+            }
+
+            .flash-sale-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header/Navigation (SAMA DENGAN INDEX.HTML) -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <i class="fas fa-laptop"></i>
+                    <span>TechHub</span>
+                    <span id="clock" style="font-size: 0.8rem; color: var(--primary-color); margin-left: 10px;"></span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="index.html#products" class="nav-link">Produk</a></li>
+                    <li><a href="promo.html" class="nav-link active">Promo</a></li>
+                    <li><a href="index.html#reviews" class="nav-link">Review</a></li>
+                    <li><a href="index.html#faq" class="nav-link">FAQ</a></li>
+                </ul>
+                <div class="nav-right">
+                    <button class="contact-btn">CONTACT US</button>
+                    <button class="theme-toggle" id="themeToggle" title="Toggle Dark/Light Mode">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button class="hamburger" id="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Promo Hero Section -->
+    <section class="promo-hero">
+        <div class="container">
+            <h1>🎉 MEGA SALE TECHHUB 🎉</h1>
+            <p>Diskon hingga 70% untuk semua kategori produk!</p>
+            
+            <!-- Countdown -->
+            <div class="countdown">
+                <div class="countdown-item">
+                    <span class="number" id="days">09</span>
+                    <span class="label">Hari</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="number" id="hours">15</span>
+                    <span class="label">Jam</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="number" id="minutes">42</span>
+                    <span class="label">Menit</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="number" id="seconds">35</span>
+                    <span class="label">Detik</span>
+                </div>
+            </div>
+
+            <p style="font-size: 1.1rem; margin-top: 20px;">Jangan lewatkan kesempatan emas ini! Stok terbatas dan penawaran berlaku selama persediaan masih ada.</p>
+        </div>
+    </section>
+
+    <!-- Promo By Category -->
+    <section class="promo-categories">
+        <div class="container">
+            <h2 class="section-title">Promo Per Kategori</h2>
+            <div class="category-promo-grid">
+                <div class="category-promo-card">
+                    <h3><i class="fas fa-laptop"></i> Laptop</h3>
+                    <div class="discount">-50%</div>
+                    <p>Diskon besar-besaran untuk semua laptop gaming dan profesional</p>
+                    <button class="btn">Lihat Promo</button>
+                </div>
+
+                <div class="category-promo-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                    <h3><i class="fas fa-desktop"></i> PC Desktop</h3>
+                    <div class="discount">-45%</div>
+                    <p>PC gaming dan workstation dengan harga super murah</p>
+                    <button class="btn" style="color: #f5576c;">Lihat Promo</button>
+                </div>
+
+                <div class="category-promo-card" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                    <h3><i class="fas fa-memory"></i> GPU Graphics</h3>
+                    <div class="discount">-60%</div>
+                    <p>Kartu grafis terbaru dengan potongan harga fantastis</p>
+                    <button class="btn" style="color: #4facfe;">Lihat Promo</button>
+                </div>
+
+                <div class="category-promo-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+                    <h3><i class="fas fa-tv"></i> Monitor</h3>
+                    <div class="discount">-40%</div>
+                    <p>Monitor gaming dan profesional dengan diskon menggiurkan</p>
+                    <button class="btn" style="color: #43e97b;">Lihat Promo</button>
+                </div>
+
+                <div class="category-promo-card" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                    <h3><i class="fas fa-keyboard"></i> Aksesori</h3>
+                    <div class="discount">-35%</div>
+                    <p>Keyboard, mouse, headset dengan potongan harga menarik</p>
+                    <button class="btn" style="color: #fa709a;">Lihat Promo</button>
+                </div>
+
+                <div class="category-promo-card" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+                    <h3><i class="fas fa-tag"></i> Flash Sale</h3>
+                    <div class="discount">-70%</div>
+                    <p>Produk pilihan dengan diskon tertinggi, stok sangat terbatas!</p>
+                    <button class="btn" style="color: #a8edea;">Lihat Promo</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Flash Sale Products -->
+    <section class="flash-sale">
+        <div class="container">
+            <h2 class="section-title">⚡ Flash Sale Produk</h2>
+            <div class="flash-sale-grid" id="flashSaleGrid">
+                <!-- Flash sale products will be loaded here by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Voucher Section -->
+    <section class="voucher-section">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Kode Voucher & Kupon</h2>
+            <div class="vouchers-grid">
+                <div class="voucher-card">
+                    <h3>Diskon Umum</h3>
+                    <div class="voucher-discount">Rp 100.000</div>
+                    <div class="voucher-code">TECH100</div>
+                    <p class="voucher-desc">Minimum pembelian Rp 500.000</p>
+                    <button class="copy-btn" onclick="copyToClipboard('TECH100')">Copy Kode</button>
+                </div>
+
+                <div class="voucher-card">
+                    <h3>Diskon Laptop</h3>
+                    <div class="voucher-discount">Rp 250.000</div>
+                    <div class="voucher-code">LAPTOP250</div>
+                    <p class="voucher-desc">Khusus pembelian laptop, min Rp 10juta</p>
+                    <button class="copy-btn" onclick="copyToClipboard('LAPTOP250')">Copy Kode</button>
+                </div>
+
+                <div class="voucher-card">
+                    <h3>Gratis Ongkos Kirim</h3>
+                    <div class="voucher-discount">FREE ONGKIR</div>
+                    <div class="voucher-code">FREEONGKIR</div>
+                    <p class="voucher-desc">Gratis ongkir ke seluruh Indonesia</p>
+                    <button class="copy-btn" onclick="copyToClipboard('FREEONGKIR')">Copy Kode</button>
+                </div>
+
+                <div class="voucher-card">
+                    <h3>Bundle Deal</h3>
+                    <div class="voucher-discount">-30%</div>
+                    <div class="voucher-code">BUNDLE30</div>
+                    <p class="voucher-desc">Untuk pembelian 3 item atau lebih</p>
+                    <button class="copy-btn" onclick="copyToClipboard('BUNDLE30')">Copy Kode</button>
+                </div>
+
+                <div class="voucher-card">
+                    <h3>Member Premium</h3>
+                    <div class="voucher-discount">-25%</div>
+                    <div class="voucher-code">PREMIUM25</div>
+                    <p class="voucher-desc">Member eksklusif TechHub terima benefit lebih</p>
+                    <button class="copy-btn" onclick="copyToClipboard('PREMIUM25')">Copy Kode</button>
+                </div>
+
+                <div class="voucher-card">
+                    <h3>Spesial Hari Ini</h3>
+                    <div class="voucher-discount">-40%</div>
+                    <div class="voucher-code">TODAY40</div>
+                    <p class="voucher-desc">Khusus hari ini, berlaku sampai jam 23:59</p>
+                    <button class="copy-btn" onclick="copyToClipboard('TODAY40')">Copy Kode</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Terms & Conditions -->
+    <section class="terms">
+        <div class="container">
+            <h2 class="section-title">Syarat & Ketentuan Promo</h2>
+            <div class="terms-content">
+                <h3><i class="fas fa-check-circle"></i> Berlaku Untuk</h3>
+                <ul>
+                    <li>Promo berlaku untuk semua pelanggan TechHub</li>
+                    <li>Berlaku untuk pembelian online dan offline</li>
+                    <li>Tidak dapat dikombinasikan dengan promo lainnya (kecuali gratis ongkir)</li>
+                    <li>Hanya berlaku untuk produk pilihan yang sudah ditandai</li>
+                </ul>
+
+                <h3><i class="fas fa-calendar"></i> Periode Promo</h3>
+                <ul>
+                    <li>Promo berlaku hingga 31 Desember 2025</li>
+                    <li>Flash sale berakhir ketika stok habis</li>
+                    <li>Penawaran dapat berubah sewaktu-waktu tanpa pemberitahuan</li>
+                    <li>Stok terbatas, siapa cepat dia dapat!</li>
+                </ul>
+
+                <h3><i class="fas fa-box"></i> Cara Klaim</h3>
+                <ul>
+                    <li>Pilih produk yang ingin Anda beli</li>
+                    <li>Masukkan kode voucher saat checkout</li>
+                    <li>Diskon akan langsung dikurangi dari total harga</li>
+                    <li>Lanjutkan proses pembayaran hingga selesai</li>
+                </ul>
+
+                <h3><i class="fas fa-info-circle"></i> Ketentuan Lainnya</h3>
+                <ul>
+                    <li>Tidak berlaku untuk produk yang sudah dalam diskon</li>
+                    <li>Tidak dapat ditukar dengan uang tunai</li>
+                    <li>Pembeli bertanggung jawab atas validitas kode voucher</li>
+                    <li>TechHub berhak membatalkan transaksi yang mencurigakan</li>
+                </ul>
+
+                <h3><i class="fas fa-phone"></i> Customer Service</h3>
+                <ul>
+                    <li>Pertanyaan tentang promo? Hubungi customer service kami</li>
+                    <li>WhatsApp: 0812-3456-7890</li>
+                    <li>Email: promo@techhub.com</li>
+                    <li>Jam operasional: 09:00 - 21:00 setiap hari</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (SAMA DENGAN INDEX.HTML) -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Tentang Kami</h4>
+                    <p>TechHub adalah toko elektronik online terpercaya yang menyediakan laptop, PC, dan aksesori komputer berkualitas tinggi dengan harga kompetitif.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Kontak Kami</h4>
+                    <p>Email: info@techhub.com</p>
+                    <p>Telepon: 0812-3456-7890</p>
+                    <p>Alamat: Jl. Teknologi No. 123, Jakarta, Indonesia</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Ikuti Kami</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 TechHub. All rights reserved.</p>
+                <p>Dikembangkan oleh: <strong>Zekko Jotty Nugroho</strong> | NIM: <strong>A12.2022.06860</strong></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Theme toggle
+        document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+
+        function toggleTheme() {
+            const body = document.body;
+            body.classList.toggle('dark-mode');
+            localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
+            
+            const icon = document.getElementById('themeToggle').querySelector('i');
+            if (body.classList.contains('dark-mode')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        }
+
+        // Check theme preference
+        function checkTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            
+            if (savedTheme === 'dark' || (prefersDark && !savedTheme)) {
+                document.body.classList.add('dark-mode');
+                document.getElementById('themeToggle').querySelector('i').classList.remove('fa-moon');
+                document.getElementById('themeToggle').querySelector('i').classList.add('fa-sun');
+            }
+        }
+
+        // Countdown timer
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const endDate = new Date(new Date().getFullYear() + 1, 11, 31).getTime();
+            const distance = endDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+        }
+
+        // Copy to clipboard
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Kode ' + text + ' telah disalin ke clipboard!');
+            }).catch(err => {
+                console.error('Gagal menyalin: ', err);
+            });
+        }
+
+        // Flash sale products
+        const flashSaleProducts = [
+            { name: 'RTX 4090 Beast', oldPrice: 19999000, newPrice: 13999000, discount: 70, image: 'img/Gpu1.jpeg', stock: 5 },
+            { name: 'Gaming Laptop Pro', oldPrice: 16999000, newPrice: 9999000, discount: 41, image: 'img/Gambarlaptop1.jpeg', stock: 8 },
+            { name: 'Gaming PC Beast', oldPrice: 24999000, newPrice: 14999000, discount: 40, image: 'img/Pc1.jpeg', stock: 3 },
+            { name: 'Professional Monitor 4K', oldPrice: 8999000, newPrice: 5999000, discount: 33, image: 'img/Monitor2.jpeg', stock: 12 },
+            { name: 'Mechanical Gaming Keyboard', oldPrice: 1299000, newPrice: 699000, discount: 46, image: 'img/Keyboard1.jpeg', stock: 25 },
+            { name: 'Ultra Precision Gaming Mouse', oldPrice: 899000, newPrice: 449000, discount: 50, image: 'img/Mouse3.jpeg', stock: 18 },
+            { name: 'RGB Gaming Headset', oldPrice: 1499000, newPrice: 899000, discount: 40, image: 'img/accessories.jpg', stock: 6 },
+            { name: 'Casing PC Premium', oldPrice: 2999000, newPrice: 1799000, discount: 40, image: 'img/casing.png', stock: 10 },
+        ];
+
+        function loadFlashSale() {
+            const grid = document.getElementById('flashSaleGrid');
+            if (!grid) return;
+
+            grid.innerHTML = '';
+            flashSaleProducts.forEach(product => {
+                const card = document.createElement('div');
+                card.className = 'flash-sale-card';
+                card.innerHTML = `
+                    <div class="flash-sale-image">
+                        <img src="${product.image}" alt="${product.name}">
+                        <div class="flash-sale-discount">-${product.discount}%</div>
+                    </div>
+                    <div class="flash-sale-info">
+                        <div class="flash-sale-name">${product.name}</div>
+                        <div class="flash-sale-price">
+                            <span class="new-price">Rp ${(product.newPrice).toLocaleString('id-ID')}</span>
+                            <span class="old-price">Rp ${(product.oldPrice).toLocaleString('id-ID')}</span>
+                        </div>
+                        <div class="stock-info">Sisa stok: ${product.stock}</div>
+                        <button class="buy-btn">Beli Sekarang</button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            checkTheme();
+            loadFlashSale();
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        });
+
+        // Navigation active
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+            });
+        });
+
+        // Hamburger menu
+        document.getElementById('hamburger').addEventListener('click', () => {
+            const navMenu = document.querySelector('.nav-menu');
+            navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+        });
+    </script>
+    <script src="atur1.js"></script>
+</body>
+</html>
